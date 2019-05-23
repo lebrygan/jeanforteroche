@@ -9,6 +9,10 @@
     <body>
 
         <p>Welcome !</p>
+        <form method="post">
+            <textarea id="mytextarea"></textarea>
+        </form>
         
+        <?php include("footer.php"); ?>
     </body>
 </html>
