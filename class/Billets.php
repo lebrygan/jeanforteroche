@@ -7,43 +7,59 @@ class Billets{
           $_published,
           $_textPublication;
 
-  public __construct(array $donnees){
+  public function __construct(array $donnees){
     $this->hydrate($donnees);
   }
 
   //Getters and setters
 
-  public function id(){return $this->_id;};
-  public function showOrder(){return $this->_showOrder;};
-  public function datePublication(){return $this->_datePublication;};
-  public function published(){return $this->_published;};
-  public function textPublication(){return $this->_textPublication;};
+  public function id(){return $this->_id;}
+  public function showOrder(){return $this->_showOrder;}
+  public function datePublication(){return $this->_datePublication;}
+  public function published(){return $this->_published;}
+  public function textPublication(){return $this->_textPublication;}
 
   public function setId($id){
     $id = (int) $id;
     if($id > 0)
       $this->_id = $id;
-  };
-  public function setShowOrder(){return $this->_showOrder;};
-  public function setDatePublication(){return $this->_datePublication;};
-  public function setPublished(){return $this->_published;};
-  public function setTextPublication(){return $this->_textPublication;};
+  }
+  public function setShowOrder($showOrder){
+    $showOrder = (int) $showOrder;
+    if($showOrder > 0)
+      $this->_showOrder = $showOrder;
+  }
+  public function setDatePublication($datePublication){
+    if(preg_match("#^([0-9]{2}.?){5,6}$#", $datePublication))
+      $this->_datePublication = $datePublication;
+  }
+  public function setPublished($published){
+    if($published == true || $published == false)
+      $this->_published = $published;
+  }
+  public function setTextPublication($textPublication){
+    if(is_string($textPublication))
+      $this->_textPublication = $textPublication;
+  }
 
-
+  //Hydratation
   public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)
     {
-      // On récupère le nom du setter correspondant à l'attribut.
+      // Getting the setters name wich correspond to the key
       $method = 'set'.ucfirst($key);
           
-      // Si le setter correspondant existe.
+      // if the setter exist we call it
       if (method_exists($this, $method))
-      {
-        // On appelle le setter.
         $this->$method($value);
-      }
     }
+  }
+
+  //Debbug
+  public function showInformation(){
+    return 'id :'.$this->_id.' showOrder: '.$this->_showOrder.' datePublication: '.$this->_datePublication.' published: '.$this->_published.' textPublication: '.$this->_textPublication;
+  }
 }
 
   ?>
