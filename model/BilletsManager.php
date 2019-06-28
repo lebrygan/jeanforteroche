@@ -1,5 +1,6 @@
 <?php
-require_once("Manager.php");
+require_once('Manager.php');
+require_once('Billet.php');
 
 class BilletsManager extends Manager
 {
@@ -36,14 +37,14 @@ class BilletsManager extends Manager
 
   public function getList()
   {
-    $Billet = [];
+    $billets = [];
 
     $db = $this->dbConnect();
     $q = $db->query('SELECT id, showOrder, datePublication, published, textPublication FROM billets ORDER BY showOrder DESC');
 
-    while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+    while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {
-      $billets[] = new Billets($donnees);
+      $billets[] = new Billet($data);
     }
 
     return $billets;
@@ -64,4 +65,3 @@ class BilletsManager extends Manager
   }
 
 }
-?>

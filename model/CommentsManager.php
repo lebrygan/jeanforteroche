@@ -1,5 +1,6 @@
 <?php
-require_once("Manager.php");
+require_once('Manager.php');
+require_once('Comment.php');
 
 class CommentsManager extends Manager
 {
@@ -36,14 +37,14 @@ class CommentsManager extends Manager
 
   public function getList()
   {
-    $comment = [];
+    $comments = [];
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, relativeBillet, datePublication, comment, signaled FROM comments ORDER BY relativeBillet DESC');
+    $q = $db->query('SELECT id, relativeBillet, datePublication, comment, signaled FROM comments ORDER BY relativeBillet, datePublication DESC');
 
-    while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+    while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {
-      $comments[] = new Billets($donnees);
+      $comments[] = new Comment($data);
     }
 
     return $comments;
@@ -63,4 +64,3 @@ class CommentsManager extends Manager
     $q->execute();
   }
 }
-?>

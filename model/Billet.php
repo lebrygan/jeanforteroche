@@ -49,5 +49,3 @@ class Billet extends DbObject{
     return 'id :'.$this->_id.' showOrder: '.$this->_showOrder.' datePublication: '.$this->_datePublication.' published: '.$this->_published.' textPublication: '.$this->_textPublication;
   }
 }
-
-  ?>

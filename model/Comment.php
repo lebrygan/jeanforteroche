@@ -49,5 +49,3 @@ class Comment extends DbObject{
     return 'id :'.$this->_id.' relativeBillet: '.$this->_relativeBillet.' datePublication: '.$this->_datePublication.' signaled: '.$this->_signaled.' comment: '.$this->_comment;
   }
 }
-
-  ?>

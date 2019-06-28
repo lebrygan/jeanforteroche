@@ -1,24 +1,23 @@
 <?php
-	session_start();
-	require('controlleur.php');
+session_start();
 
-	if(isset($_GET['logout'])){
-		session_destroy();
-		header('Location: index.php'); 
-	}
+require('controlleur.php');
 
-	if(isset($_GET['user'])){
-		if($_GET['user'] == 'visitor'){
-			$_SESSION['user'] = 'visitor';
-		}
-	}
+if(isset($_GET['logout'])){
+	session_destroy();
+	header('Location: index.php'); 
+}
 
-	if(isset($_SESSION['user'])){
-		if($_SESSION['user'] == 'visitor')
-			require('view/visitorsView.php');
+if(isset($_GET['user'])){
+	if($_GET['user'] == 'visitor'){
+		$_SESSION['user'] = 'visitor';
 	}
-	else{
-		require('view/welcomePage.php');
-	}
+}
 
- ?>
+if(isset($_SESSION['user'])){
+	if($_SESSION['user'] == 'visitor')
+		visitorsView();
+}
+else{
+	require('view/welcomePage.php');
+}

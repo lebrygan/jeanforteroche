@@ -8,11 +8,14 @@
         
     <body>
 
-        <p>Welcome !</p>
-        <form method="post">
-            <textarea id="mytextarea"></textarea>
-        </form>
-        
+        <h1>Billet simple pour l'Alaska</h1>
+
+        <?php foreach ($billets as $billet) {?>
+
+            <div>
+                <p><?= $billet->textPublication(); ?></p>
+            </div>
+        <?php } ?>
         <a href="index.php?logout=out">Logout</a>
     </body>
 </html>
