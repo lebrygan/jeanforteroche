@@ -8,11 +8,11 @@
         
     <body>
 
-        <p>Welcome !</p>
-        <form method="post">
-            <textarea id="mytextarea"></textarea>
-        </form>
+        <div>
+            <p>Bienvenu sur mon site ! Vous êtes :</p>
+            <a href="index.php?user=visitor">Visiteur</a>
+            <a href="index.php?user=author">Auteur</a>
+        </div>
         
-        <?php include("footer.php"); ?>
     </body>
 </html>
