@@ -1,6 +1,8 @@
 <?php
 include('class/BilletsManager.php');
-include('class/Billets.php');
+include('class/Billet.php');
+include('class/CommentsManager.php');
+include('class/Comment.php');
 
 $bddName = 'blogforteroche';
 
@@ -11,7 +13,7 @@ try{
 }
 
 $billetsManager = new BilletsManager($bdd);
-$billet = new Billets([
+$billet = new Billet([
 	'id' => 4,
     'showOrder' => 4,
     'datePublication' => 20190524124600,
