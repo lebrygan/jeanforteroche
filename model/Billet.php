@@ -1,5 +1,7 @@
 <?php
-class Billet{
+require_once('DbObject.php');
+
+class Billet extends DbObject{
 
   private $_id,
           $_showOrder,
@@ -40,20 +42,6 @@ class Billet{
   public function setTextPublication($textPublication){
     if(is_string($textPublication))
       $this->_textPublication = $textPublication;
-  }
-
-  //Hydratation
-  public function hydrate(array $donnees)
-  {
-    foreach ($donnees as $key => $value)
-    {
-      // Getting the setters name wich correspond to the key
-      $method = 'set'.ucfirst($key);
-          
-      // if the setter exist we call it
-      if (method_exists($this, $method))
-        $this->$method($value);
-    }
   }
 
   //Debbug
