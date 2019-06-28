@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Mon blog</title>
-        <link href="public/style.css" rel="stylesheet" /> 
-    </head>
-        
-    <body>
 
-        <h1>Billet simple pour l'Alaska</h1>
+<?php ob_start(); ?>
 
-        <?php foreach ($billets as $i => $billet) {?>
+    <h1>Billet simple pour l'Alaska</h1>
 
-            <div>
-                <p><?= $billet->textPublication(); ?></p>
-                <?php foreach ($comments as $comment) {
-                    if($comment->relativeBillet() == $billet->id())
-                        echo '<p>'.$comment->comment().'</p>'; 
-                } ?>
-            </div>
+    <?php foreach ($billets as $i => $billet) {?>
 
-        <?php } ?>
+        <div>
+            <p><?= $billet->textPublication(); ?></p>
+            <?php foreach ($comments as $comment) {
+                if($comment->relativeBillet() == $billet->id())
+                    echo '<p>'.$comment->comment().'</p>'; 
+            } ?>
+        </div>
 
-        <a href="index.php?logout=out">Logout</a>
-    </body>
-</html>
+    <?php } ?>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
