@@ -10,12 +10,18 @@
 
         <h1>Billet simple pour l'Alaska</h1>
 
-        <?php foreach ($billets as $billet) {?>
+        <?php foreach ($billets as $i => $billet) {?>
 
             <div>
                 <p><?= $billet->textPublication(); ?></p>
+                <?php foreach ($comments as $comment) {
+                    if($comment->relativeBillet() == $billet->id())
+                        echo '<p>'.$comment->comment().'</p>'; 
+                } ?>
             </div>
+
         <?php } ?>
+
         <a href="index.php?logout=out">Logout</a>
     </body>
 </html>

@@ -40,7 +40,7 @@ class CommentsManager extends Manager
     $comments = [];
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, relativeBillet, datePublication, comment, signaled FROM comments ORDER BY relativeBillet, datePublication DESC');
+    $q = $db->query('SELECT id, relativeBillet, datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication ASC');
 
     while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {
