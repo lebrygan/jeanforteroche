@@ -1,16 +1,13 @@
 <?php
-class BilletsManager
-{
-  private $_db; // Instance de PDO
+require_once("Manager.php");
 
-  public function __construct($db)
-  {
-    $this->setDb($db);
-  }
+class BilletsManager extends Manager
+{
 
   public function add(Billet $billet)
   {
-    $q = $this->_db->prepare('INSERT INTO billets(showOrder, datePublication, published, textPublication) VALUES(:showOrder, :datePublication, :published, :textPublication)');
+    $db = $this->dbConnect();
+    $q = $db->prepare('INSERT INTO billets(showOrder, datePublication, published, textPublication) VALUES(:showOrder, :datePublication, :published, :textPublication)');
 
     $q->bindValue(':showOrder', $billet->showOrder(), PDO::PARAM_INT);
     $q->bindValue(':datePublication', $billet->datePublication());
@@ -22,14 +19,16 @@ class BilletsManager
 
   public function delete(Billet $billet)
   {
-    $this->_db->exec('DELETE FROM billets WHERE id = '.$billet->id());
+    $db = $this->dbConnect();
+    $db->exec('DELETE FROM billets WHERE id = '.$billet->id());
   }
 
   public function get($id)
   {
     $id = (int) $id;
 
-    $q = $this->_db->query('SELECT id, showOrder, datePublication, published, textPublication FROM billets WHERE id = '.$id);
+    $db = $this->dbConnect();
+    $q = $db->query('SELECT id, showOrder, datePublication, published, textPublication FROM billets WHERE id = '.$id);
     $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
     return new Billets($donnees);
@@ -39,7 +38,8 @@ class BilletsManager
   {
     $Billet = [];
 
-    $q = $this->_db->query('SELECT id, showOrder, datePublication, published, textPublication FROM billets ORDER BY showOrder DESC');
+    $db = $this->dbConnect();
+    $q = $db->query('SELECT id, showOrder, datePublication, published, textPublication FROM billets ORDER BY showOrder DESC');
 
     while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {
@@ -51,7 +51,8 @@ class BilletsManager
 
   public function update(Billet $billet)
   {
-    $q = $this->_db->prepare('UPDATE billets SET showOrder = :showOrder, datePublication = :datePublication, published = :published, textPublication = :textPublication WHERE id = :id');
+    $db = $this->dbConnect();
+    $q = $db->prepare('UPDATE billets SET showOrder = :showOrder, datePublication = :datePublication, published = :published, textPublication = :textPublication WHERE id = :id');
 
     $q->bindValue(':showOrder', $billet->showOrder(), PDO::PARAM_INT);
     $q->bindValue(':datePublication', $billet->datePublication());
@@ -62,9 +63,5 @@ class BilletsManager
     $q->execute();
   }
 
-  public function setDb(PDO $db)
-  {
-    $this->_db = $db;
-  }
 }
 ?>
