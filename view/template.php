@@ -8,6 +8,7 @@
         
     <body>
         <?= $content ?>
-        <a href="index.php?logout=out">Logout</a>
+      	<script src="js/ajax.js"></script>
+      	<script src="js/signaled.js"></script>
     </body>
 </html>

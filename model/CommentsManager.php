@@ -52,13 +52,23 @@ class CommentsManager extends Manager
   public function update(Comment $comment)
   {
     $db = $this->dbConnect();
-    $q = $db->prepare('UPDATE billet SET relativeBillet = :relativeBillet, datePublication = :datePublication, comment = :comment, signaled = :signaled WHERE id = :id');
+    $q = $db->prepare('UPDATE comments SET relativeBillet = :relativeBillet, datePublication = :datePublication, comment = :comment, signaled = :signaled WHERE id = :id');
 
     $q->bindValue(':relativeBillet', $comment->relativeBillet(), PDO::PARAM_INT);
     $q->bindValue(':datePublication', $comment->datePublication());
     $q->bindValue(':comment', $comment->comment());
     $q->bindValue(':signaled', $comment->signaled());
     $q->bindValue(':id', $comment->id(), PDO::PARAM_INT);
+
+    $q->execute();
+  }
+
+  public function signal(int $id)
+  {
+    $db = $this->dbConnect();
+    $q = $db->prepare('UPDATE comments SET signaled = true WHERE id = :id');
+
+    $q->bindValue(':id', $id, PDO::PARAM_INT);
 
     $q->execute();
   }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require('controlleur.php');
+require('controller/controller.php');
 
 if(isset($_GET['logout'])){
 	session_destroy();
@@ -9,9 +9,12 @@ if(isset($_GET['logout'])){
 }
 
 if(isset($_GET['user'])){
-	if($_GET['user'] == 'visitor'){
+	if($_GET['user'] == 'destroy'){
+		session_destroy();
+	} else if($_GET['user'] == 'visitor'){
 		$_SESSION['user'] = 'visitor';
 	}
+	header('Location: index.php');
 }
 
 if(isset($_SESSION['user'])){
