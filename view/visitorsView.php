@@ -7,9 +7,20 @@
 
         <div>
             <p><?= $billet->textPublication(); ?></p>
-            <?php foreach ($comments as $comment) {
-                if($comment->relativeBillet() == $billet->id())
-                    echo '<p>'.$comment->comment().'</p>'; 
+            <p><?= $billet->datePublicationReadable(); ?></p>
+            <form>
+                <textarea name='comment' id='comment' placeholder="Votre commentaire"></textarea>
+                <input type="submit" name="send" />
+            </form>
+            <?php
+                foreach ($comments as $comment) {
+                    if($comment->relativeBillet() == $billet->id()){
+                        echo '<div>';
+                            echo '<p>'.$comment->comment().'</p>';
+                            echo '<p>'.$comment->datePublicationReadable().'</p>';
+                            echo '<button class="signaled">Signaler ce commentaire</button>';
+                        echo '</div>';
+                }
             } ?>
         </div>
 
