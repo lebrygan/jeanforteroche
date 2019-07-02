@@ -16,10 +16,12 @@ class BilletsManager extends Manager
     $q->execute();
   }
 
-  public function delete(Billet $billet)
+  public function delete($id)
   {
     $db = $this->dbConnect();
-    $db->exec('DELETE FROM billets WHERE id = '.$billet->id());
+    $q = $db->prepare('DELETE FROM billets WHERE id = :id');
+    $q->bindValue(':id', $id, PDO::PARAM_INT);
+    $q->execute();
   }
 
   public function get($id)

@@ -16,7 +16,7 @@ for (var i = signalButtons.length - 1; i >= 0; i--) {
 }
 
 //Buttons for the autor view
-var deleteButtons = document.getElementsByClassName("delete");
+var deleteButtons = document.getElementsByClassName("deleteComment");
 
 for (var i = deleteButtons.length - 1; i >= 0; i--) {
 	deleteButtons[i].addEventListener("click", (e)=>{

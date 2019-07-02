@@ -9,7 +9,7 @@
 		            <p><?= $comment->datePublicationReadable(); ?></p>
 		            <p>Associé au billet n°<?= $comment->relativeBillet(); ?></p>
 	            </div>
-	            <button class="delete" name=<?= '"'.$comment->id().'"' ?> >Supprimer ce commentaire</button>
+	            <button class="deleteComment" name=<?= '"'.$comment->id().'"' ?> >Supprimer ce commentaire</button>
 	            <button class="unSignal" name=<?= '"'.$comment->id().'"' ?> >Rétablir ce commentaire</button>
 	        </div>
     	<?php }

@@ -6,7 +6,7 @@
         </textarea>
         <input type="checkbox" name="published" id="published" checked>
         <label for="published">Publier le billet</label>
-        <input type="submit" value="Ajouter un nouveau billet">
+        <button type="submit">Ajouter un nouveau billet</button>
     </form>
     <?php foreach ($billets as $i => $billet) {?>
         <div>
@@ -24,8 +24,9 @@
                     }
                 ?>
                 <label for="published">Publier le billet</label>
-                <input type="hidden" name="idBillet" value=<?= '"'.$billet->id().'"'; ?>>
-                <input type="submit" value="Modifier le billet">
+                <input type="hidden" name="idBillet" value=<?= '"'.$billet->id().'"'; ?> />
+                <button type="submit">Modifier le billet</button>
+                <button class="deleteBillet" name=<?= '"'.$billet->id().'"'; ?>>Supprimer le billet</button>
             </form>
             <?php
                 foreach ($comments as $j => $comment) {
@@ -34,7 +35,7 @@
                             echo '<div><p>'.$comment->comment().'</p>';
                             echo '<p>'.$comment->datePublicationReadable().'</p></div>';
                             echo '<button class="signal" name="'.$comment->id().'">Signaler ce commentaire</button>';
-                            echo '<button class="delete" name="'.$comment->id().'">Supprimer ce commentaire</button>';
+                            echo '<button class="deleteComment" name="'.$comment->id().'">Supprimer ce commentaire</button>';
                         echo '</div>';
                 }
             } ?>
