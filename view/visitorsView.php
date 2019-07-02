@@ -16,7 +16,7 @@
             </form>
             <?php
                 foreach ($comments as $j => $comment) {
-                    if($comment->relativeBillet() == $billet->id()){
+                    if($comment->relativeBillet() == $billet->id() && !$comment->signaled()){
                         echo '<div>';
                             echo '<div><p>'.$comment->comment().'</p>';
                             echo '<p>'.$comment->datePublicationReadable().'</p></div>';

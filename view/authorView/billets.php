@@ -1,5 +1,13 @@
 <?php ob_start(); ?>
 
+    <form method="POST" action="controller/addBillet.php">
+        <textarea name="textPublication" class="tinyMCEarea">
+            Nouveau Billet 
+        </textarea>
+        <input type="checkbox" name="published" id="published" checked>
+        <label for="published">Publier le billet</label>
+        <input type="submit" value="Ajouter un nouveau billet">
+    </form>
     <?php foreach ($billets as $i => $billet) {?>
         <div>
             <form method="POST" action="controller/editBillet.php">
@@ -7,6 +15,7 @@
                     <?= $billet->textPublication(); ?> 
                 </textarea>
                 <p><?= $billet->datePublicationReadable(); ?></p>
+                <p>Ceci est le billet n°<?= $billet->id(); ?></p>
                 <?php
                     if ($billet->published()) {
                         echo '<input type="checkbox" name="published" id="published" checked>';
