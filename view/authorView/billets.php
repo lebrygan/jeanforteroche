@@ -1,9 +1,5 @@
 <?php ob_start(); ?>
 
-    <h1>Billet simple pour l'Alaska</h1>
-
-    
-
     <?php foreach ($billets as $i => $billet) {?>
 
         <div>
@@ -20,7 +16,8 @@
                         echo '<div>';
                             echo '<div><p>'.$comment->comment().'</p>';
                             echo '<p>'.$comment->datePublicationReadable().'</p></div>';
-                            echo '<button class="signaled" name="'.$comment->id().'">Signaler ce commentaire</button>';
+                            echo '<button class="signal" name="'.$comment->id().'">Signaler ce commentaire</button>';
+                            echo '<button class="delete" name="'.$comment->id().'">Supprimer ce commentaire</button>';
                         echo '</div>';
                 }
             } ?>

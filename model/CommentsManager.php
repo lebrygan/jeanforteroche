@@ -20,7 +20,11 @@ class CommentsManager extends Manager
   public function delete($id)
   {
     $db = $this->dbConnect();
-    $db->exec('DELETE FROM comments WHERE id = '.$id;
+    $q = $db->prepare('DELETE FROM comments WHERE id = '.$id);
+
+    $q->bindValue(':id', $id, PDO::PARAM_INT);
+
+    $q->execute();
   }
 
   public function get($id)
@@ -62,7 +66,7 @@ class CommentsManager extends Manager
     $q->execute();
   }
 
-  public function signal(int $id)
+  public function signal($id)
   {
     $db = $this->dbConnect();
     $q = $db->prepare('UPDATE comments SET signaled = true WHERE id = :id');
@@ -72,7 +76,7 @@ class CommentsManager extends Manager
     $q->execute();
   }
 
-  public function unSignal(int $id)
+  public function unSignal($id)
   {
     $db = $this->dbConnect();
     $q = $db->prepare('UPDATE comments SET signaled = false WHERE id = :id');

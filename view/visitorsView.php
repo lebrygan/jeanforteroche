@@ -16,7 +16,7 @@
                         echo '<div>';
                             echo '<div><p>'.$comment->comment().'</p>';
                             echo '<p>'.$comment->datePublicationReadable().'</p></div>';
-                            echo '<button class="signaled" name="'.$comment->id().'">Signaler ce commentaire</button>';
+                            echo '<button class="signal" name="'.$comment->id().'">Signaler ce commentaire</button>';
                         echo '</div>';
                 }
             } ?>
