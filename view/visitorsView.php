@@ -1,10 +1,14 @@
 
 <?php ob_start(); ?>
-    <?php foreach ($billets as $i => $billet) {?>
-
+    <?php
+    foreach ($billets as $i => $billet) {
+        if($billet->published()){
+        ?>
         <div>
-            <p><?= $billet->textPublication(); ?></p>
-            <p><?= $billet->datePublicationReadable(); ?></p>
+            <div>
+                <?= $billet->textPublication(); ?>
+                <p><?= $billet->datePublicationReadable(); ?></p>
+            </div>
             <form method="post" action="controller/addComment.php">
                 <textarea name="comment" placeholder="Votre commentaire"></textarea>
                 <input type="hidden" name="billet" value=<?='"'.$billet->id().'"'; ?> />
@@ -21,8 +25,10 @@
                 }
             } ?>
         </div>
-
-    <?php } ?>
+        <?php
+        }
+    }
+    ?>
 
     <a href="index.php?user=destroy">Retour à la page d'accueil</a>
 <?php $content = ob_get_clean(); ?>
