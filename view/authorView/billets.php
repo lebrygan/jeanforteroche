@@ -3,13 +3,10 @@
     <?php foreach ($billets as $i => $billet) {?>
 
         <div>
-            <p><?= $billet->textPublication(); ?></p>
+            <textarea name=<?= '"'.$billet->id().'"'; ?> class="tinyMCEarea">
+                <?= $billet->textPublication(); ?> 
+            </textarea>
             <p><?= $billet->datePublicationReadable(); ?></p>
-            <form method="post" action="controller/addComment.php">
-                <textarea name="comment" placeholder="Votre commentaire"></textarea>
-                <input type="hidden" name="billet" value=<?='"'.$billet->id().'"'; ?> />
-                <input type="submit" value="Envoyer" />
-            </form>
             <?php
                 foreach ($comments as $j => $comment) {
                     if($comment->relativeBillet() == $billet->id()){
