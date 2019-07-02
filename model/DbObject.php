@@ -26,7 +26,7 @@ protected	$_id,
 	      $this->_id = $id;
   	}
   	public function setDatePublication($datePublication){
-	    if(preg_match("#^([0-9]{2}.?){5,7}$#", $datePublication))
+	    if(preg_match("#^([0-9]{1,2}.?){5,7}$#", $datePublication))
 	      $this->_datePublication = $datePublication;
   	}
 

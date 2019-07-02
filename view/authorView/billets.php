@@ -1,5 +1,9 @@
-
 <?php ob_start(); ?>
+
+    <h1>Billet simple pour l'Alaska</h1>
+
+    
+
     <?php foreach ($billets as $i => $billet) {?>
 
         <div>
@@ -23,8 +27,4 @@
         </div>
 
     <?php } ?>
-
-    <a href="index.php?user=destroy">Retour à la page d'accueil</a>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+<?php $content .= ob_get_clean(); ?>

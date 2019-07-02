@@ -13,6 +13,8 @@ if(isset($_GET['user'])){
 		session_destroy();
 	} else if($_GET['user'] == 'visitor'){
 		$_SESSION['user'] = 'visitor';
+	} else if($_GET['user'] == 'author'){
+		$_SESSION['user'] = 'author';
 	}
 	header('Location: index.php');
 }
@@ -20,6 +22,8 @@ if(isset($_GET['user'])){
 if(isset($_SESSION['user'])){
 	if($_SESSION['user'] == 'visitor')
 		visitorsView();
+	else if($_SESSION['user'] == 'author')
+		authorView();
 }
 else{
 	require('view/welcomePage.php');
