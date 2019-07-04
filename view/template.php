@@ -7,10 +7,13 @@
     </head>
         
     <body>
-        <h1>Billet simple pour l'Alaska</h1>
+        <div id="mainOverlay">
+            <h1 id="mainTitle">Billet simple pour l'Alaska</h1>
 
-        <?= $content ?>
+            <?= $content ?>
+        </div>
       	<script src="js/ajax.js"></script>
+        <script src="js/class/ShowHideButton.js"></script>
       	<script src="js/manageComment.js"></script>
     </body>
 </html>

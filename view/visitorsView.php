@@ -4,26 +4,29 @@
     foreach ($billets as $i => $billet) {
         if($billet->published()){
         ?>
-        <div>
-            <div>
+        <div class="billet">
+            <div class="textBillet">
                 <?= $billet->textPublication(); ?>
-                <p><?= $billet->datePublicationReadable(); ?></p>
+                <p class="date"><?= $billet->datePublicationReadable(); ?></p>
             </div>
-            <form method="post" action="controller/addComment.php">
-                <textarea name="comment" placeholder="Votre commentaire"></textarea>
+            <form class="addComment" method="post" action="controller/addComment.php">
+                <textarea class="areaComment" name="comment" placeholder="Votre commentaire"></textarea>
                 <input type="hidden" name="billet" value=<?='"'.$billet->id().'"'; ?> />
-                <input type="submit" value="Envoyer" />
+                <button type="submit">Envoyer</button>
             </form>
-            <?php
-                foreach ($comments as $j => $comment) {
-                    if($comment->relativeBillet() == $billet->id() && !$comment->signaled()){
-                        echo '<div>';
-                            echo '<div><p>'.$comment->comment().'</p>';
-                            echo '<p>'.$comment->datePublicationReadable().'</p></div>';
-                            echo '<button class="signal" name="'.$comment->id().'">Signaler ce commentaire</button>';
-                        echo '</div>';
-                }
-            } ?>
+            <div class="comments">
+                <?php
+                    foreach ($comments as $j => $comment) {
+                        if($comment->relativeBillet() == $billet->id() && !$comment->signaled()){
+                            echo '<div class="comment">';
+                                echo '<div class="textComment"><p>'.$comment->comment().'</p>';
+                                echo '<p class="date">'.$comment->datePublicationReadable().'</p></div>';
+                                echo '<button class="signal" name="'.$comment->id().'">Signaler ce commentaire</button>';
+                            echo '</div>';
+                    }
+                } ?>
+                <button class="hideComments">Afficher tous les commentaires</button>
+            </div>
         </div>
         <?php
         }

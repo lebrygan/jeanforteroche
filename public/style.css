@@ -1,0 +1,103 @@
+
+/* Main ---------------------------- */
+body
+{
+	background-image: url("../public/img/northPole.jpg");
+	background-attachment: fixed;
+	background-size: 100%;
+	margin: 0px;
+}
+
+#mainOverlay
+{
+	width: 70%;
+	margin: 0px auto;
+	text-align: center;
+	background-color: rgba(255,255,255,0.5);
+}
+
+#mainTitle
+{
+	margin: 0px;
+	padding: 20px 0px;
+}
+
+.date
+{
+	width: 90%;
+	text-align: right;
+	padding: 10px;
+	margin: 0px;
+}
+
+button
+{
+	padding: 10px;
+	margin: 10px;
+	border-radius: 15px;
+}
+
+/* Billet ----------------------------*/
+.billet
+{
+	border-top: 1px solid black;
+}
+
+.textBillet
+{
+	background-color: rgba(255,255,255,0.5);
+}
+
+/*Author view*/
+.tinyMCEarea
+{
+	height: 500px;
+}
+
+#addBillet
+{
+	border-top: 5px double black;
+	border-bottom: 5px double black;
+	padding: 10px 0px;
+	margin: 10px 0px;
+}
+
+/* Comment ------------------------*/
+
+.areaComment
+{
+	width: 500px;
+}
+
+.addComment
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.comment
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(255,255,255,0.5);
+	margin: 5px;
+}
+
+.textComment
+{
+	margin: 10px;
+	width: 700px;
+}
+
+.textComment p
+{
+	margin: 0px;
+}
+
+.hideComments
+{
+	display: none;
+	margin: 10px auto;
+}

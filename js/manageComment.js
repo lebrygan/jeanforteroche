@@ -41,7 +41,18 @@ for (var i = unSignalButtons.length - 1; i >= 0; i--) {
 
 			ajaxPost("http://localhost/projet4/controller/unSignalComment.php",comment,
 				(response)=>{
-					e.target.parentNode.innerHTML = '<p>Le commentaire a été rétablit</p>';
+					e.target.parentNode.innerHTML = '<p>Le commentaire a été rétabli</p>';
 				});
 		});
 }
+
+
+// Show/hide buttons
+var comments = document.getElementsByClassName("comments");
+var hideButtons = document.getElementsByClassName("hideComments");
+var showHideButtons = [];
+
+for (var i = 0 ; i <= comments.length - 1; i++) {
+	showHideButtons[i] = new ShowHideButton(hideButtons[i],comments[i].children);
+}
+
