@@ -1,7 +1,6 @@
 <?php
 require_once('model/BilletsManager.php');
 require_once('model/CommentsManager.php');
-require_once('model/users.php');
 
 function visitorsView(){
 	$billetsManager = new BilletsManager;
