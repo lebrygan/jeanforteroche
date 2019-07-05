@@ -19,7 +19,7 @@
                     foreach ($comments as $j => $comment) {
                         if($comment->relativeBillet() == $billet->id() && !$comment->signaled()){
                             echo '<div class="comment">';
-                                echo '<div class="textComment"><p>'.$comment->comment().'</p>';
+                                echo '<div class="textComment"><p>'.htmlspecialchars($comment->comment()).'</p>';
                                 echo '<p class="date">'.$comment->datePublicationReadable().'</p></div>';
                                 echo '<button class="signal" name="'.$comment->id().'">Signaler ce commentaire</button>';
                             echo '</div>';
@@ -28,12 +28,11 @@
                 <button class="hideComments">Afficher tous les commentaires</button>
             </div>
         </div>
+        <a href="index.php?user=destroy">Retour à la page d'accueil</a>
         <?php
         }
     }
     ?>
-
-    <a href="index.php?user=destroy">Retour à la page d'accueil</a>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

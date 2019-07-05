@@ -1,6 +1,7 @@
 <?php
 require_once('model/BilletsManager.php');
 require_once('model/CommentsManager.php');
+require_once('model/users.php');
 
 function visitorsView(){
 	$billetsManager = new BilletsManager;
@@ -34,5 +35,11 @@ function authorView(){
 
 	require('view/authorView/billets.php');
 	require('view/authorView/footer.php');
+	require('view/template.php');
+}
+
+function authorConnect(){
+	$content = '';
+	require('view/authorView/access.php');
 	require('view/template.php');
 }

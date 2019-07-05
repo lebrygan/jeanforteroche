@@ -18,12 +18,22 @@ if(isset($_GET['user'])){
 	}
 	header('Location: index.php');
 }
-
 if(isset($_SESSION['user'])){
 	if($_SESSION['user'] == 'visitor')
 		visitorsView();
-	else if($_SESSION['user'] == 'author')
-		authorView();
+	else if($_SESSION['user'] == 'author'){
+		if(isset($_SESSION['isConnected'])){
+			if($_SESSION['isConnected'] == 'connected')
+				authorView();
+			else{
+				authorConnect();
+			}
+		}else{
+			authorConnect();
+		}
+	}else{
+		require('view/welcomePage.php');
+	}
 }
 else{
 	require('view/welcomePage.php');

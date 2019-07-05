@@ -36,7 +36,7 @@
                 foreach ($comments as $j => $comment) {
                     if($comment->relativeBillet() == $billet->id()){
                         echo '<div class="comment">';
-                            echo '<div class="textComment"><p>'.$comment->comment().'</p>';
+                            echo '<div class="textComment"><p>'.htmlspecialchars($comment->comment()).'</p>';
                             echo '<p class="date">'.$comment->datePublicationReadable().'</p></div>';
                             echo '<button class="signal" name="'.$comment->id().'">Signaler ce commentaire</button>';
                             echo '<button class="deleteComment" name="'.$comment->id().'">Supprimer ce commentaire</button>';

@@ -1,6 +1,6 @@
 <?php
 
-class DbObject
+abstract class DbObject
 {
 protected	$_id,
 			$_datePublication;
