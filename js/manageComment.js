@@ -7,7 +7,7 @@ for (var i = signalButtons.length - 1; i >= 0; i--) {
 			var signaled = new FormData();
 			signaled.append("comment", e.target.name);
 
-			ajaxPost("http://localhost/projet4/controller/signalComment.php",signaled,
+			ajaxPost("http://localhost/projet4/controller/ajaxController/signalComment.php",signaled,
 				(response)=>{
 					e.target.parentNode.firstChild.style.border = '1px solid red';
 					e.target.parentNode.firstChild.insertAdjacentHTML("beforeEnd",'<p class="signalText">Ce commentaire a été signalé</p>');;
@@ -24,7 +24,7 @@ for (var i = deleteButtons.length - 1; i >= 0; i--) {
 			var comment = new FormData();
 			comment.append("comment", e.target.name);
 
-			ajaxPost("http://localhost/projet4/controller/deleteComment.php",comment,
+			ajaxPost("http://localhost/projet4/controller/ajaxController/deleteComment.php",comment,
 				(response)=>{
 					e.target.parentNode.innerHTML = '<p>Le commentaire a été supprimé</p>';
 				});
@@ -39,7 +39,7 @@ for (var i = unSignalButtons.length - 1; i >= 0; i--) {
 			var comment = new FormData();
 			comment.append("comment", e.target.name);
 
-			ajaxPost("http://localhost/projet4/controller/unSignalComment.php",comment,
+			ajaxPost("http://localhost/projet4/controller/ajaxController/unSignalComment.php",comment,
 				(response)=>{
 					e.target.parentNode.innerHTML = '<p>Le commentaire a été rétabli</p>';
 				});

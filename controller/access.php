@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../model/UsersManager.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/managers/UsersManager.php');
 
 if(isset($_POST['email']) and isset($_POST['password'])){
 	$usersManager = new UsersManager;

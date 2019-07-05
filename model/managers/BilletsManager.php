@@ -1,6 +1,6 @@
 <?php
 require_once('Manager.php');
-require_once('Billet.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/entitys/Billet.php');
 
 class BilletsManager extends Manager
 {

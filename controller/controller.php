@@ -1,6 +1,6 @@
 <?php
-require_once('model/BilletsManager.php');
-require_once('model/CommentsManager.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/managers/BilletsManager.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/managers/CommentsManager.php');
 
 function visitorsView(){
 	$billetsManager = new BilletsManager;

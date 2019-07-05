@@ -1,6 +1,6 @@
 <?php
-require_once('../model/CommentsManager.php');
-require_once('../model/Comment.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/managers/CommentsManager.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/entitys/Comment.php');
 
 if(isset($_POST['comment']) && isset($_POST['billet'])){
 	$commentManager = new CommentsManager;

@@ -10,7 +10,7 @@ for (var i = deleteBillet.length - 1; i >= 0; i--) {
 				billet.append("billet", e.target.name);
 
 
-				ajaxPost("http://localhost/projet4/controller/deleteBillet.php",billet,
+				ajaxPost("http://localhost/projet4/controller/ajaxController/deleteBillet.php",billet,
 					(response)=>{
 						e.target.parentNode.parentNode.innerHTML = '<p>Le billet a été supprimé</p>';
 					});
