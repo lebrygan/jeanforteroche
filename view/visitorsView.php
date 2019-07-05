@@ -12,7 +12,7 @@
             <form class="addComment" method="post" action="controller/addComment.php">
                 <textarea class="areaComment" name="comment" placeholder="Votre commentaire"></textarea>
                 <input type="hidden" name="billet" value=<?='"'.$billet->id().'"'; ?> />
-                <button type="submit">Envoyer</button>
+                <button class="btn btn-primary" type="submit">Envoyer</button>
             </form>
             <div class="comments">
                 <?php
