@@ -35,12 +35,14 @@ class BilletsManager extends Manager
     return new Billets($donnees);
   }
 
-  public function getList()
+  public function getList($published = false)
   {
     $billets = [];
-
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, UNIX_TIMESTAMP(datePublication) as datePublication, published, textPublication FROM billets ORDER BY id DESC');
+    if(!$published)
+      $q = $db->query('SELECT id, UNIX_TIMESTAMP(datePublication) as datePublication, published, textPublication FROM billets ORDER BY id DESC');
+    else
+      $q = $db->query('SELECT id, UNIX_TIMESTAMP(datePublication) as datePublication, published, textPublication FROM billets WHERE published = 1 ORDER BY id DESC');
 
     while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {

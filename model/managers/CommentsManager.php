@@ -38,13 +38,18 @@ class CommentsManager extends Manager
     return new Billets($donnees);
   }
 
-  public function getList()
+  public function getList($id = -1)
   {
     $comments = [];
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
-
+    if($id == -1 || is_nan($id))
+      $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
+    else{
+      $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE relativeBillet = :id ORDER BY relativeBillet ASC, datePublication DESC');
+      $q->bindValue(':id',$id);
+      $q->execute();
+    }
     while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {
       $comments[] = new Comment($data);

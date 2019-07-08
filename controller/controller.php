@@ -4,12 +4,21 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/managers/CommentsManager.
 
 function visitorsView(){
 	$billetsManager = new BilletsManager;
-	$billets = $billetsManager->getList();
+	$billets = $billetsManager->getList(true);
 
 	$commentsManager = new CommentsManager;
-	$comments = $commentsManager->getList();
 
-	require('view/visitorsView.php');
+
+	$comments = [];
+
+	$content = '';
+
+	foreach ($billets as $billet) {
+		$comments = $commentsManager->getList($billet->id());
+		include('view/visitorsView.php');
+
+	}
+	require('view/template.php');
 }
 
 function authorView(){
