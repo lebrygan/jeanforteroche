@@ -10,12 +10,8 @@ protected	$_id,
 	public function datePublication(){return $this->_datePublication;}
 	//Getter for a readable date
 	public function datePublicationReadable(){
-		$date = 'Publié le ';
-		if(preg_match("#\s+.+$#", $this->_datePublication)){
-			$date .= preg_replace('#(\s+)#', ' à ', $this->_datePublication);
-		} else {
-			$date .= $this->_datePublication;
-		}
+		setlocale(LC_TIME,'');
+		$date = strftime ('%d %b %G',$this->_datePublication);
 		return $date;
 	}
 
@@ -26,7 +22,6 @@ protected	$_id,
 	      $this->_id = $id;
   	}
   	public function setDatePublication($datePublication){
-	    if(preg_match("#^([0-9]{1,2}.?){5,7}$#", $datePublication))
 	      $this->_datePublication = $datePublication;
   	}
 

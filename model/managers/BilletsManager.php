@@ -29,7 +29,7 @@ class BilletsManager extends Manager
     $id = (int) $id;
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, DATE_FORMAT(datePublication, "%d/%m/%Y %k:%i") as datePublication, published, textPublication FROM billets WHERE id = '.$id);
+    $q = $db->query('SELECT id, UNIX_TIMESTAMP(datePublication) as datePublication, published, textPublication FROM billets WHERE id = '.$id);
     $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
     return new Billets($donnees);
@@ -40,7 +40,7 @@ class BilletsManager extends Manager
     $billets = [];
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, DATE_FORMAT(datePublication, "%d/%m/%Y %k:%i") as datePublication, published, textPublication FROM billets ORDER BY id DESC');
+    $q = $db->query('SELECT id, UNIX_TIMESTAMP(datePublication) as datePublication, published, textPublication FROM billets ORDER BY id DESC');
 
     while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {

@@ -32,7 +32,7 @@ class CommentsManager extends Manager
     $id = (int) $id;
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, relativeBillet, DATE_FORMAT(datePublication, "%d/%m/%Y %k:%i") as datePublication, comment, signaled FROM comments WHERE id = '.$id);
+    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE id = '.$id);
     $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
     return new Billets($donnees);
@@ -43,7 +43,7 @@ class CommentsManager extends Manager
     $comments = [];
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, relativeBillet, DATE_FORMAT(datePublication, "%d/%m/%Y %k:%i") as datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
+    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
 
     while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {
