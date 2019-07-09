@@ -11,6 +11,7 @@ body{
 	width: 100%;
 	min-height: 100vh;
 	background-color: rgba(0,0,0,0.8);
+	padding-bottom: 20px;
 }
 
 .titleUnderline{
@@ -34,19 +35,21 @@ body{
 }
 /* Welcome page ----------------------------- */
 .welcome{
-	background-image: url("../img/Alaska.jpg");
-	background-size: cover;
 	color: rgb(240,240,240);
 }
 
-.overlay{
-	background-color: rgba(0,0,0,0.7);
+#welcomeOverlay{
+	background-color: rgba(0,0,0,0.8);
 	border-radius: 50%;
 	width: 500px;
 	height: 450px;
 	justify-content: center;
 	display: flex;
 	flex-direction: column;
+}
+
+#welcomeOverlay:hover{
+	background-color: rgba(0,0,0,0.9);
 }
 
 

@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^index.html$ index.php [L]
+RewriteRule ^index.(php|html)/admin$ index.php?user=author [L] 
