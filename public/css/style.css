@@ -9,9 +9,29 @@ body{
 
 #mainOverlay{
 	width: 100%;
+	min-height: 100vh;
 	background-color: rgba(0,0,0,0.8);
 }
 
+.titleUnderline{
+	background-color: white;
+	text-align: left;
+	padding-left: 25% !important;
+}
+
+.titleUnderline::after{
+	content: '';
+	width: 40%;
+	height: 3px;
+	background-color: rgb(100,100,100);
+	position: absolute;
+	left: 35%;
+	bottom: 15px;
+}
+
+.bg-white{
+	background-color: white;
+}
 /* Welcome page ----------------------------- */
 .welcome{
 	background-image: url("../img/Alaska.jpg");
@@ -122,29 +142,6 @@ body{
 }
 
 /* Comments */
-.formContainer{
-	background-color: white;
-}
-
-.comments h3{
-	background-color: white;
-	text-align: left;
-	padding-left: 25%;
-}
-
-.comments h3::after{
-	content: '';
-	width: 40%;
-	height: 3px;
-	background-color: rgb(100,100,100);
-	position: absolute;
-	left: 35%;
-	bottom: 15px;
-}
-
-.comment{
-	background-color: white;
-}
 
 .textComment{
 	flex: 3;
@@ -173,12 +170,18 @@ body{
 	height: 40px;
 }
 
-/* footer */
-.footer{
-	background-color: white;
+.deleteComment{
+	width: 100px;
+	height: 40px;
 }
 
-.footer img{
+.unSignal{
+	width: 80px;
+	height: 40px;
+}
+
+/* footer */
+#authorImg{
 	width: 150px;
 	min-width: 150px;
 	border-radius: 50%;
@@ -197,11 +200,6 @@ body{
 	display: flex;
 }
 
-.signal{
-	width: 80px;
-	height: 40px;
-}
-
 
 @media all and (max-width: 767px){
 	#mainContainer{
@@ -212,11 +210,11 @@ body{
 		display: none;
 	}
 
-	.comments h3{
+	.titleUnderline{
 		padding-left: 0px;
 		text-align: center;
 	}
-	.comments h3::after{
+	.titleUnderline::after{
 		display: none;
 	}
 }

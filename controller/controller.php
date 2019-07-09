@@ -15,9 +15,10 @@ function visitorsView(){
 
 	foreach ($billets as $billet) {
 		$comments = $commentsManager->getList($billet->id(),false);
-		include('view/visitorsView.php');
+		require('view/visitorsView.php');
 
 	}
+	require('view/footer.php');
 	require('view/template.php');
 }
 
@@ -26,22 +27,19 @@ function authorView(){
 	$billets = $billetsManager->getList();
 
 	$commentsManager = new CommentsManager;
-	$comments = $commentsManager->getList();
+	$comments = $commentsManager->getSignaled();
 
-	$isSignaled=false;
-	foreach ($comments as $comment) {
-		if($comment->signaled() == true){
-			$isSignaled=true;
-			break;
-		}
-	}
 	$content = '';
-	if($isSignaled)
+	if(count($comments) > 0)
 		require('view/authorView/signaledComment.php');
 	else
 		require('view/authorView/noSignaledComment.php');
+	require('view/authorView/addBillet.php');
+	foreach ($billets as $i => $billet){
+		$comments = $commentsManager->getList($billet->id(),false);
+		require('view/authorView/oldBillets.php');
+	}
 
-	require('view/authorView/billets.php');
 	require('view/authorView/footer.php');
 	require('view/template.php');
 }

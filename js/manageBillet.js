@@ -12,7 +12,7 @@ for (var i = deleteBillet.length - 1; i >= 0; i--) {
 
 				ajaxPost("http://localhost/projet4/controller/ajaxController/deleteBillet.php",billet,
 					(response)=>{
-						e.target.parentNode.parentNode.innerHTML = '<p>Le billet a été supprimé</p>';
+						e.target.parentNode.parentNode.parentNode.innerHTML = '<p class="alert alert-danger text-center">Le billet a été supprimé</p>';
 					});
 				return false;
 			}else{

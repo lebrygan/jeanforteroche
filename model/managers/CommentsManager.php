@@ -17,10 +17,13 @@ class CommentsManager extends Manager
     $q->execute();
   }
 
-  public function delete($id)
+  public function delete($id,$relativeBillet = false)
   {
     $db = $this->dbConnect();
-    $q = $db->prepare('DELETE FROM comments WHERE id = '.$id);
+    if(!$relativeBillet)
+      $q = $db->prepare('DELETE FROM comments WHERE id = :id');
+    else
+      $q = $db->prepare('DELETE FROM comments WHERE relativeBillet = :id');
 
     $q->bindValue(':id', $id, PDO::PARAM_INT);
 
@@ -59,6 +62,18 @@ class CommentsManager extends Manager
       $q->bindValue(':id',$id);
       $q->execute();
     }
+    while ($data = $q->fetch(PDO::FETCH_ASSOC))
+    {
+      $comments[] = new Comment($data);
+    }
+    return $comments;
+  }
+
+  public function getSignaled()
+  {
+    $db = $this->dbConnect();
+    $comments = [];
+    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE signaled = 1 ORDER BY relativeBillet ASC, datePublication DESC');
     while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {
       $comments[] = new Comment($data);

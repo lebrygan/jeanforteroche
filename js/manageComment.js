@@ -25,7 +25,7 @@ for (var i = deleteButtons.length - 1; i >= 0; i--) {
 
 			ajaxPost("http://localhost/projet4/controller/ajaxController/deleteComment.php",comment,
 				(response)=>{
-					e.target.parentNode.innerHTML = '<p>Le commentaire a été supprimé</p>';
+					e.target.parentNode.innerHTML = '<p class="alert alert-danger">Le commentaire a été supprimé</p>';
 				});
 		});
 }
@@ -40,7 +40,7 @@ for (var i = unSignalButtons.length - 1; i >= 0; i--) {
 
 			ajaxPost("http://localhost/projet4/controller/ajaxController/unSignalComment.php",comment,
 				(response)=>{
-					e.target.parentNode.innerHTML = '<p>Le commentaire a été rétabli</p>';
+					e.target.parentNode.innerHTML = '<p class="alert alert-success">Le commentaire a été rétabli</p>';
 				});
 		});
 }
