@@ -9,8 +9,7 @@ for (var i = signalButtons.length - 1; i >= 0; i--) {
 
 			ajaxPost("http://localhost/projet4/controller/ajaxController/signalComment.php",signaled,
 				(response)=>{
-					e.target.parentNode.firstChild.style.border = '1px solid red';
-					e.target.parentNode.firstChild.insertAdjacentHTML("beforeEnd",'<p class="signalText">Ce commentaire a été signalé</p>');;
+					e.target.parentNode.parentNode.children[1].insertAdjacentHTML("beforeEnd",'<p class="alert alert-danger">Ce commentaire a été signalé</p>');;
 				});
 		});
 }

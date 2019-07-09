@@ -1,7 +1,15 @@
 /* General -----------------------------------*/
 
 body{
+	background-image: url("../img/moutain.jpg");
+	background-size: cover;
+	background-attachment: fixed;
 	background-color: rgb(50,50,50) !important;
+}
+
+#mainOverlay{
+	width: 100%;
+	background-color: rgba(0,0,0,0.8);
 }
 
 /* Welcome page ----------------------------- */
@@ -9,40 +17,6 @@ body{
 	background-image: url("../img/Alaska.jpg");
 	background-size: cover;
 	color: rgb(240,240,240);
-}
-
-
-/* Template -----------------------*/
-.page-header{
-	background-image: url("../img/Alaska.jpg");
-	background-size: cover;
-	background-position: center;
-	height: 100px;
-	margin-left: -15px;
-	margin-right: -15px;
-	margin-bottom: 15px;
-	position: relative;
-	overflow: visible;
-}
-
-.page-header h1{
-	background-color: rgba(0,0,0,0.5);
-	color: white;
-	height: 100%;
-	align-items: center;
-	display: flex;
-	margin-bottom: 15px;
-	padding: 0px 10px;
-}
-
-.page-header::after{
-	content:'';
-	position: absolute;
-	bottom: -10px;
-	left: 0px;
-	width:100%;
-	height: 10px;
-	background-image: linear-gradient(rgb(50,50,50),rgb(255,255,255));
 }
 
 .overlay{
@@ -55,27 +29,63 @@ body{
 	flex-direction: column;
 }
 
-.textComment{
-	flex: 3;
-	min-width: 250px;
-}
 
-.buttonCommentContainer{
-	flex: 1;
-}
-
-.signal{
-	width: 80px;
-	height: 40px;
-}
-
+/* Template -----------------------*/
 #mainContainer{
-	background-color: white;
+	background-color: rgba(255,255,255,0.5);
 	min-width:720px;
 }
 
+/* Header */
+
+.page-header{
+	background-image: url("../img/Alaska.jpg");
+	background-size: cover;
+	background-position: center;
+	height: 100px;
+	position: relative;
+	overflow: visible;
+}
+
+.page-header h1{
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	height: 100%;
+	align-items: center;
+	display: flex;
+	position: relative;
+}
+
+.page-header a{
+	text-decoration-color: white !important;
+}
+
+.page-header h1::after{
+	content: '';
+	width: 60%;
+	height: 3px;
+	background-color: rgb(200,200,200);
+	position: absolute;
+	left: 30px;
+	bottom: 15px;
+}
+
+.page-header::after{
+	content:'';
+	position: absolute;
+	bottom: -10px;
+	left: 0px;
+	width:100%;
+	height: 10px;
+	background-image: linear-gradient(rgba(50,50,50,1),rgba(50,50,50,0));
+	z-index: 1;
+}
+
+/* Billets */
+
 .billetContainer{
 	display: block !important;
+	background-color: white;
 }
 
 .dateBillet{
@@ -98,17 +108,80 @@ body{
 .dateBillet::after{
 	content: '';
 	position: absolute;
-	left: 0vw;
-	top:35px;
-	width: 50vw;
+	left: 5%;
+	top:50px;
+	width: 90%;
 	background-color: white;
-	border-top: 2px solid black;
-	border-bottom: 2px solid black;
+	border-top: 1.5px solid black;
+	border-bottom: 1.5px solid black;
 	height: 5px;
-	min-width: 550px;
+	/*min-width: 550px;*/
 }
 .flexBreakmd{
 	flex-basis: 100%;
+}
+
+/* Comments */
+.formContainer{
+	background-color: white;
+}
+
+.comments h3{
+	background-color: white;
+	text-align: left;
+	padding-left: 25%;
+}
+
+.comments h3::after{
+	content: '';
+	width: 40%;
+	height: 3px;
+	background-color: rgb(100,100,100);
+	position: absolute;
+	left: 35%;
+	bottom: 15px;
+}
+
+.comment{
+	background-color: white;
+}
+
+.textComment{
+	flex: 3;
+	min-width: 250px;
+}
+
+.dateComment{
+	padding-top: 8px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background-image: radial-gradient(rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0) 70%);
+	color: white;
+	font-style: italic;
+	text-align: center;
+	padding-top: 11px;
+	font-weight: 700;
+}
+
+.buttonCommentContainer{
+	flex: 1;
+}
+
+.signal{
+	width: 80px;
+	height: 40px;
+}
+
+/* footer */
+.footer{
+	background-color: white;
+}
+
+.footer img{
+	width: 150px;
+	min-width: 150px;
+	border-radius: 50%;
 }
 
 /* Visitor -----------------------------------*/
@@ -134,9 +207,16 @@ body{
 	#mainContainer{
 		min-width: 0px;
 	}
-	.dateBillet::after{
-		left: 5vw;
-		width: 80vw;
-		min-width: 0px;
+
+	.page-header h1::after{
+		display: none;
+	}
+
+	.comments h3{
+		padding-left: 0px;
+		text-align: center;
+	}
+	.comments h3::after{
+		display: none;
 	}
 }

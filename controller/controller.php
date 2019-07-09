@@ -14,7 +14,7 @@ function visitorsView(){
 	$content = '';
 
 	foreach ($billets as $billet) {
-		$comments = $commentsManager->getList($billet->id());
+		$comments = $commentsManager->getList($billet->id(),false);
 		include('view/visitorsView.php');
 
 	}

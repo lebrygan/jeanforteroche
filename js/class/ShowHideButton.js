@@ -7,7 +7,7 @@ class ShowHideButton{
 		this.button.addEventListener("click",this.switch.bind(this));
 		this.hideComments();
 		if(this.comments.length > 3){
-			this.button.className = "hideComments btn btn-primary mx-auto mb-5";
+			this.button.className = "hideComments btn btn-dark mx-auto mt-2 mb-4";
 		}
 	}
 
@@ -30,7 +30,7 @@ class ShowHideButton{
 
 	showComments(){
 		for (var j = this.comments.length-2; j >= 3; j--) {
-			this.comments[j].className = "comment d-flex justify-content-center align-items-center flex-wrap row col-md-10 col-sm-12 offset-md-1";
+			this.comments[j].className = "comment d-flex justify-content-center align-items-center flex-wrap row col-sm-12 mx-0 my-1 p-1";
 		}
 		this.button.innerHTML = "Cacher les commentaires";
 		this.hide=false;

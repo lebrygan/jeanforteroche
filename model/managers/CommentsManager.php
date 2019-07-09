@@ -38,15 +38,24 @@ class CommentsManager extends Manager
     return new Billets($donnees);
   }
 
-  public function getList($id = -1)
+  public function getList($id = -1, $signaled = true)
   {
     $comments = [];
 
     $db = $this->dbConnect();
-    if($id == -1 || is_nan($id))
-      $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
+    if($id == -1 || is_nan($id)){
+      if($signaled)
+        $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
+      else
+        $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE signaled = 0 ORDER BY relativeBillet ASC, datePublication DESC');
+    }
     else{
-      $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE relativeBillet = :id ORDER BY relativeBillet ASC, datePublication DESC');
+      if ($signaled) {
+        $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE relativeBillet = :id ORDER BY relativeBillet ASC, datePublication DESC');
+      }else{
+        $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE relativeBillet = :id AND signaled = 0 ORDER BY relativeBillet ASC, datePublication DESC');
+      }
+      
       $q->bindValue(':id',$id);
       $q->execute();
     }
