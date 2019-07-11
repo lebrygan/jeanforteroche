@@ -23,13 +23,22 @@ class UsersManager extends Manager{
 	    $q->execute();
 	}
 
+	public function delete($email){
+		$db = $this->dbConnect();
+
+	    $q = $db->prepare('DELETE FROM users WHERE email = :email');
+
+	    $q->bindValue(':email', $email);
+	    $q->execute();
+	}
+
 	public function changePwd($email,$pwd){
 		$db = $this->dbConnect();
 
 	    $q = $db->prepare('UPDATE users SET password = :pwd WHERE email = :email');
 
 	    $q->bindValue(':email', $email);
-	    $q->bindValue(':pwd', password_hash($password, PASSWORD_DEFAULT));
+	    $q->bindValue(':pwd', password_hash($pwd, PASSWORD_DEFAULT));
 	    $q->execute();
 	}
 
@@ -45,11 +54,11 @@ class UsersManager extends Manager{
 	    	$message ='<html><head><title>Mot de passe oublié</title></head>
                 <body><p>Voici votre mot de passe provisoire :'.$randomPassword.'</p></body></html>';
  
-	    	$headers ='From: "Punchline"<programmation@cosmopoly.fr>'."\n";
+	    	$headers ='From: "Jean Forteroche"<programmation@cosmopoly.fr>'."\n";
             $headers .='Reply-To: programmation@cosmopoly.fr'."\n";
             $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n";
             $headers .='Content-Transfer-Encoding: 8bit';
-	    	if(!mail($email,'Mot de passe oublié',$message,$headers)){
+	    	if(!mail($email,'Mot de passe oublié',$message,$headers))
 	    		throw new Exception('Le mail n\a pas été envoyé');
 	    }else{
 	    	throw new Exception('Le mail entré n\'est pas valide');

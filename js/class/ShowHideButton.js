@@ -6,9 +6,7 @@ class ShowHideButton{
 
 		this.button.addEventListener("click",this.switch.bind(this));
 		this.hideComments();
-		debugger;
 		if(this.comments.length > 3){
-			debugger;
 			this.button.className = "hideComments btn btn-dark mx-auto mt-2 mb-4";
 		}
 	}

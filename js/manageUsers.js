@@ -1,14 +1,28 @@
-var forgotButton = document.getElementById("forgotPwd");
+var addChangeUserButton = document.getElementById("addChangeUser");
+
+addChangeUserButton.addEventListener("click", (e)=>{
+
+	var formData = new FormData();
+	formData.append("email", document.getElementById("email").value);
+	formData.append("pwd", document.getElementById("password").value);
+
+	ajaxPost("http://cosmopoly.fr/controller/ajaxController/addChangeUsers.php",formData,
+		(response)=>{
+			document.getElementById("respondUser").innerHTML = '<p class="alert alert-danger">L\'utilisateur a été modifié</p>';
+		});
+});
+
+var deleteUserButton = document.getElementById("deleteUser");
 
 
-forgotButton.addEventListener("click", (e)=>{
+deleteUserButton.addEventListener("click", (e)=>{
 
 	var formData = new FormData();
 	formData.append("email", document.getElementById("email").value);
 
-	ajaxPost("http://cosmopoly.fr/controller/ajaxController/forgotPwd.php",formData,
+
+	ajaxPost("http://cosmopoly.fr/controller/ajaxController/deleteUsers.php",formData,
 		(response)=>{
-			e.target.parentNode.insertAdjacentHTML('afterend',
-				'<p class="alert alert-warning">Un nouveau mot de passe a été envoyé à l\'adresse spécifiée.</p>');
+			document.getElementById("respondUser").innerHTML = '<p class="alert alert-danger">L\'utilisateur a été supprimé</p>';
 		});
 });
