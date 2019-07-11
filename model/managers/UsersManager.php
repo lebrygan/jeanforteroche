@@ -58,10 +58,7 @@ class UsersManager extends Manager{
             $headers .='Reply-To: programmation@cosmopoly.fr'."\n";
             $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n";
             $headers .='Content-Transfer-Encoding: 8bit';
-	    	if(!mail($email,'Mot de passe oublié',$message,$headers))
-	    		throw new Exception('Le mail n\a pas été envoyé');
-	    }else{
-	    	throw new Exception('Le mail entré n\'est pas valide');
+	    	mail($email,'Mot de passe oublié',$message,$headers);
 	    }
 	}
 }
