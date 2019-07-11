@@ -12,6 +12,7 @@ function visitorsView(){
 	$comments = [];
 
 	$content = '';
+	$script = '';
 
 	foreach ($billets as $billet) {
 		$comments = $commentsManager->getList($billet->id(),false);
@@ -30,6 +31,7 @@ function authorView(){
 	$comments = $commentsManager->getSignaled();
 
 	$content = '';
+	$script = '';
 	if(count($comments) > 0)
 		require('view/authorView/signaledComment.php');
 	else
@@ -40,12 +42,16 @@ function authorView(){
 		require('view/authorView/oldBillets.php');
 	}
 
-	require('view/authorView/footer.php');
+	$script .='<script type="text/javascript" src="js/manageBillet.js"></script>';
+	$script .='<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=5dq4ykchp5kaozo8vxeqvqp20ycwj2n7b7fj2p2mwgbo4z2a"></script>';
+	$script .='<script>tinymce.init({selector: ".tinyMCEarea"});</script>';
+
 	require('view/template.php');
 }
 
 function authorConnect(){
 	$content = '';
+	$script = '<script src="js/manageUsers.js"></script>';
 	require('view/authorView/access.php');
 	require('view/template.php');
 }

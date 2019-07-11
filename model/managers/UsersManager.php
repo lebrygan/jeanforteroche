@@ -1,7 +1,7 @@
 <?php
 require_once('Manager.php');
 
-class usersManager extends Manager{
+class UsersManager extends Manager{
 	public function getPassword($email){
 		$db = $this->dbConnect();
 
@@ -21,5 +21,36 @@ class usersManager extends Manager{
 	    $q->bindValue(':email', $email);
 	    $q->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
 	    $q->execute();
+	}
+
+	public function changePwd($email,$pwd){
+		$db = $this->dbConnect();
+
+	    $q = $db->prepare('UPDATE users SET password = :pwd WHERE email = :email');
+
+	    $q->bindValue(':email', $email);
+	    $q->bindValue(':pwd', password_hash($password, PASSWORD_DEFAULT));
+	    $q->execute();
+	}
+
+	public function forgotPwd($email){
+		$db = $this->dbConnect();
+
+	    $q = $db->prepare('SELECT email FROM users WHERE email = :email');
+	    $q->bindValue(':email', $email);
+	    $q->execute();
+	    if($donnees = $q->fetch(PDO::FETCH_ASSOC)){
+	    	$randomPassword = bin2hex(random_bytes(5));
+	    	$this->changePwd($email,$randomPassword);
+	    	$message = 'Voici votre mot de passe provisoire : '.$randomPassword.'\n';
+	    	$message .= 'Veuillez vous connecter afin de modifier votre mot de passe.';
+	    	$headers = array(
+			    'From' => 'webmaster@example.com',
+			    'Reply-To' => 'webmaster@example.com',
+			    'X-Mailer' => 'PHP/' . phpversion()
+			);
+	    	mail($email,'Changement de mot de passe',$message,$headers); 
+	    }
+
 	}
 }

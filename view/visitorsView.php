@@ -8,7 +8,7 @@
         </div>
         <div class="container-fluid bg-white">
             <form class="d-flex justify-content-center align-items-center flex-wrap row col-md-10 col-sm-12 offset-md-1 py-3 my-1" method="post" action="controller/addComment.php">
-                <textarea class="areaComment d-block form-control mb-1 mr-1" rows="2" name="comment" placeholder="Ecrivez un commentaire"></textarea>
+                <textarea class="areaComment d-block form-control mb-1 mr-1" rows="2" name="comment" placeholder="Ecrivez un commentaire" required></textarea>
                 <div class="buttonCommentContainer"><button class="btn btn-dark mx-auto mb-1" type="submit">Envoyer</button></div>
                 <input type="hidden" name="billet" value=<?='"'.$billet->id().'"'; ?> />
             </form>
