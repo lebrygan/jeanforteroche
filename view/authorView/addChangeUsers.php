@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <div class="row m-0">
     <div class="form-inline bg-white my-2 justify-content-center">
-    	<h3 class="col-sm-12 my-1 pb-4 pt-2 titleUnderline">Ajouter/Modifier/Supprimer des utilisateurs</h3>
+    	<h3 class="col-sm-12 my-1 pb-4 pt-2 titleUnderline">Gestion des utilisateurs</h3>
     	<label for="email">Email : </label>
     	<input class="mx-2" type="text" name="email" id="email" required>
     	<label for="password">Mot de passe : </label>
