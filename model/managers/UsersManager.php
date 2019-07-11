@@ -42,15 +42,17 @@ class UsersManager extends Manager{
 	    if($donnees = $q->fetch(PDO::FETCH_ASSOC)){
 	    	$randomPassword = bin2hex(random_bytes(5));
 	    	$this->changePwd($email,$randomPassword);
-	    	$message = 'Voici votre mot de passe provisoire : '.$randomPassword.'\n';
-	    	$message .= 'Veuillez vous connecter afin de modifier votre mot de passe.';
-	    	$headers = array(
-			    'From' => 'webmaster@example.com',
-			    'Reply-To' => 'webmaster@example.com',
-			    'X-Mailer' => 'PHP/' . phpversion()
-			);
-	    	mail($email,'Changement de mot de passe',$message,$headers); 
+	    	$message ='<html><head><title>Mot de passe oublié</title></head>
+                <body><p>Voici votre mot de passe provisoire :'.$randomPassword.'</p></body></html>';
+ 
+	    	$headers ='From: "Punchline"<programmation@cosmopoly.fr>'."\n";
+            $headers .='Reply-To: programmation@cosmopoly.fr'."\n";
+            $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n";
+            $headers .='Content-Transfer-Encoding: 8bit';
+	    	if(!mail($email,'Mot de passe oublié',$message,$headers)){
+	    		throw new Exception('Le mail n\a pas été envoyé');
+	    }else{
+	    	throw new Exception('Le mail entré n\'est pas valide');
 	    }
-
 	}
 }

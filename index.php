@@ -16,7 +16,7 @@ if(isset($_GET['user'])){
 	} else if($_GET['user'] == 'author'){
 		$_SESSION['user'] = 'author';
 	}
-	header('Location: /projet4/index.html');
+	header('Location: /index.html');
 }
 if(isset($_SESSION['user'])){
 	if($_SESSION['user'] == 'visitor')

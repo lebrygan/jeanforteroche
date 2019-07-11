@@ -1,6 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/managers/BilletsManager.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/entitys/Billet.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/managers/BilletsManager.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/entitys/Billet.php');
 
 if(isset($_POST['textPublication'])){
 	$billetsManager = new BilletsManager;

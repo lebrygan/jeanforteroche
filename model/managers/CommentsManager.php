@@ -1,6 +1,6 @@
 <?php
 require_once('Manager.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/projet4/model/entitys/Comment.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/model/entitys/Comment.php');
 
 class CommentsManager extends Manager
 {
