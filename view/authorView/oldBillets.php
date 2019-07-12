@@ -38,8 +38,8 @@
                                 <p class="dateComment mx-2 d-inline-block"><?= $comment->datePublicationReadable() ?></p>
                             </div>
                             <div class="textComment col-sm-10">
-                                <p class="col-12"><?= htmlspecialchars($comment->comment()) ?></p>
-                                <p class="col-xs-12 text-sm-right text-xs-center font-italic"><?= '- Publié par <span class="font-weight-bold">'.htmlspecialchars($comment->name()).'</span> -' ?></p>
+                                <p class="col-12 px-0"><?= htmlspecialchars($comment->comment()) ?></p>
+                                <p class="col-xs-12 px-0 text-sm-right text-xs-center font-italic"><?= '- Publié par <span class="font-weight-bold">'.htmlspecialchars($comment->name()).'</span> -' ?></p>
                             </div>
                         </div>
                         <div class="d-flex row">

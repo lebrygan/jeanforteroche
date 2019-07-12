@@ -8,9 +8,9 @@
                         <p class="dateComment mx-2 d-inline-block"><?= $comment->datePublicationReadable() ?></p>
                     </div>
                     <div class="textComment col-sm-10">
-                        <p class="col-12"><?= htmlspecialchars($comment->comment()) ?></p>
-                        <p class="col-xs-12 text-sm-right text-xs-center font-italic"><?= '- Publié par <span class="font-weight-bold">'.htmlspecialchars($comment->name()).'</span> -' ?></p>
-                        <p class="col-12 text-sm-right text-xs-center font-italic">Associé au billet n°<?= $comment->relativeBillet(); ?></p>
+                        <p class="col-12 px-0"><?= htmlspecialchars($comment->comment()) ?></p>
+                        <p class="col-xs-12 px-0 text-sm-right text-xs-center font-italic"><?= '- Publié par <span class="font-weight-bold">'.htmlspecialchars($comment->name()).'</span> -' ?></p>
+                        <p class="col-12 px-0 text-sm-right text-xs-center font-italic">Associé au billet n°<?= $comment->relativeBillet(); ?></p>
                     </div>
                 </div>
 	            <button class="deleteComment btn btn-danger mb-1" name=<?= '"'.$comment->id().'"' ?> >Supprimer</button>

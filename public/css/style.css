@@ -144,11 +144,6 @@ body{
 }
 
 /* Comments */
-
-.textComment{
-	min-width: 250px;
-}
-
 .dateComment{
 	padding-top: 8px;
 	width: 70px;
@@ -184,20 +179,6 @@ body{
 	border-radius: 50%;
 }
 
-/* Visitor -----------------------------------*/
-
-.areaComment{
-	flex: 3;
-	min-width: 250px;
-}
-
-.buttonCommentContainer{
-	flex: 1;
-	justify-content: center;
-	display: flex;
-}
-
-
 @media all and (max-width: 767px){
 	#mainContainer{
 		min-width: 0px;
@@ -208,7 +189,6 @@ body{
 	}
 
 	.titleUnderline{
-		padding-left: 0px;
 		text-align: center;
 	}
 	.titleUnderline::after{
