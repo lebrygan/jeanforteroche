@@ -5,7 +5,8 @@ class Comment extends DbObject{
 
   protected $_relativeBillet,
             $_comment,
-            $_signaled;
+            $_signaled,
+            $_name;
 
   public function __construct(array $donnees){
     $this->hydrate($donnees);
@@ -16,6 +17,7 @@ class Comment extends DbObject{
   public function relativeBillet(){return $this->_relativeBillet;}
   public function comment(){return $this->_comment;}
   public function signaled(){return $this->_signaled;}
+  public function name(){return $this->_name;}
 
   public function setRelativeBillet($relativeBillet){
     $relativeBillet = (int) $relativeBillet;
@@ -29,5 +31,10 @@ class Comment extends DbObject{
   public function setSignaled($signaled){
     if($signaled == true || $signaled == false)
       $this->_signaled = $signaled;
+  }
+  public function setName($name){
+    if(strlen($name) > 255)
+      $name = substr($name, 0,255);
+    $this->_name = $name;
   }
 }

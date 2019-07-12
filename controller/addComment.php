@@ -7,6 +7,7 @@ if(isset($_POST['comment']) && isset($_POST['billet'])){
 
 	$data['relativeBillet'] = $_POST['billet'];
 	$data['comment'] = $_POST['comment'];
+	$data['name'] = $_POST['nameComment'];
 	$data['signaled'] = 0;
 	$newComment = new Comment($data);
 

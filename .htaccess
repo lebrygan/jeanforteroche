@@ -1,4 +1,5 @@
 Options +FollowSymlinks
 RewriteEngine On
-RewriteRule ^index.html$ / [L]
-RewriteRule ^index.(php|html)/admin$ /?user=author [L] 
+RewriteBase /
+RewriteRule ^index.html$ index.php [L]
+RewriteRule ^(index.(html|php)/)?admin$ index.php?user=author [L]

@@ -8,11 +8,12 @@ class CommentsManager extends Manager
   public function add(Comment $comment)
   {
     $db = $this->dbConnect();
-    $q = $db->prepare('INSERT INTO comments(relativeBillet, comment, signaled) VALUES(:relativeBillet, :comment, :signaled)');
+    $q = $db->prepare('INSERT INTO comments(relativeBillet, comment, signaled, name) VALUES(:relativeBillet, :comment, :signaled, :name)');
 
     $q->bindValue(':relativeBillet', $comment->relativeBillet(), PDO::PARAM_INT);
     $q->bindValue(':comment', $comment->comment());
     $q->bindValue(':signaled', $comment->signaled());
+    $q->bindValue(':name', $comment->name());
 
     $q->execute();
   }
@@ -35,10 +36,10 @@ class CommentsManager extends Manager
     $id = (int) $id;
 
     $db = $this->dbConnect();
-    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE id = '.$id);
+    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled, name FROM comments WHERE id = '.$id);
     $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
-    return new Billets($donnees);
+    return new Comment($donnees);
   }
 
   public function getList($id = -1, $signaled = true)
@@ -48,15 +49,15 @@ class CommentsManager extends Manager
     $db = $this->dbConnect();
     if($id == -1 || is_nan($id)){
       if($signaled)
-        $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
+        $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled, name FROM comments ORDER BY relativeBillet ASC, datePublication DESC');
       else
-        $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE signaled = 0 ORDER BY relativeBillet ASC, datePublication DESC');
+        $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled, name FROM comments WHERE signaled = 0 ORDER BY relativeBillet ASC, datePublication DESC');
     }
     else{
       if ($signaled) {
-        $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE relativeBillet = :id ORDER BY relativeBillet ASC, datePublication DESC');
+        $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled, name FROM comments WHERE relativeBillet = :id ORDER BY relativeBillet ASC, datePublication DESC');
       }else{
-        $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE relativeBillet = :id AND signaled = 0 ORDER BY relativeBillet ASC, datePublication DESC');
+        $q = $db->prepare('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled, name FROM comments WHERE relativeBillet = :id AND signaled = 0 ORDER BY relativeBillet ASC, datePublication DESC');
       }
       
       $q->bindValue(':id',$id);
@@ -73,7 +74,7 @@ class CommentsManager extends Manager
   {
     $db = $this->dbConnect();
     $comments = [];
-    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled FROM comments WHERE signaled = 1 ORDER BY relativeBillet ASC, datePublication DESC');
+    $q = $db->query('SELECT id, relativeBillet, UNIX_TIMESTAMP(datePublication) as datePublication, comment, signaled, name FROM comments WHERE signaled = 1 ORDER BY relativeBillet ASC, datePublication DESC');
     while ($data = $q->fetch(PDO::FETCH_ASSOC))
     {
       $comments[] = new Comment($data);
@@ -84,12 +85,13 @@ class CommentsManager extends Manager
   public function update(Comment $comment)
   {
     $db = $this->dbConnect();
-    $q = $db->prepare('UPDATE comments SET relativeBillet = :relativeBillet, datePublication = :datePublication, comment = :comment, signaled = :signaled WHERE id = :id');
+    $q = $db->prepare('UPDATE comments SET relativeBillet = :relativeBillet, datePublication = :datePublication, comment = :comment, signaled = :signaled, name = :name WHERE id = :id');
 
     $q->bindValue(':relativeBillet', $comment->relativeBillet(), PDO::PARAM_INT);
     $q->bindValue(':datePublication', $comment->datePublication());
     $q->bindValue(':comment', $comment->comment());
     $q->bindValue(':signaled', $comment->signaled());
+    $q->bindValue(':name', $comment->name());
     $q->bindValue(':id', $comment->id(), PDO::PARAM_INT);
 
     $q->execute();

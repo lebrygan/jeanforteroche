@@ -7,7 +7,7 @@
     	<label for="password">Mot de passe : </label>
     	<input class="mx-2" type="password" name="password" id="password">
     	<button class="btn btn-primary m-2" id="addChangeUser">Ajouter/Modifier</button>
-    	<button class="btn btn-warning m-2" id="deleteUser">supprimer</button>
+    	<button class="btn btn-warning m-2" id="deleteUser">Supprimer</button>
     </div>
     <div class="col-12" id="respondUser"></div>
 </div>
