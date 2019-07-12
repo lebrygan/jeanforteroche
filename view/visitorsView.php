@@ -30,14 +30,14 @@
                     ?>
                     <div class="bg-white d-flex justify-content-center align-items-center flex-wrap row col-sm-12 mx-0 my-1 p-1">
                         <div class="row col-sm-12 p-0">
-                            <div class="col-sm-2 col-xs-12 text-center align-items-center">
+                            <div class="col-md-1 col-sm-2 col-xs-12 p-0 my-auto text-center">
                                 <p class="dateComment mx-2 d-inline-block"><?= $comment->datePublicationReadable() ?></p>
                             </div>
-                            <div class="textComment col-sm-8 col-xs-12 px-xs-0">
+                            <div class="textComment col-md-9 col-sm-8 col-xs-12 px-xs-0">
                                 <p class="col-12 px-0"><?= htmlspecialchars($comment->comment()) ?></p>
                                 <p class="col-xs-12 px-0 text-sm-right text-xs-center font-italic"><?= '- Publié par <span class="font-weight-bold">'.htmlspecialchars($comment->name()).'</span> -' ?></p>
                             </div>
-                            <div class="col-sm-2 col-xs-12 align-items-center">
+                            <div class="col-sm-2 col-xs-12 my-auto align-items-center">
                                 <button class="signal btn btn-warning mx-auto my-1" name=<?= '"'.$comment->id().'"' ?>>Signaler</button>
                             </div>
                         </div>

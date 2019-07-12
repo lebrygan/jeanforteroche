@@ -23,18 +23,27 @@ class Comment extends DbObject{
     $relativeBillet = (int) $relativeBillet;
     if($relativeBillet > 0)
       $this->_relativeBillet = $relativeBillet;
+    else
+      throw new InvalidArgumentException("Le commentaire doit être lié à un id de billet positif");
   }
   public function setComment($comment){
     if(is_string($comment))
       $this->_comment = $comment;
+    else
+      throw new InvalidArgumentException("Le text du commentaire doit être de type string");
   }
   public function setSignaled($signaled){
     if($signaled == true || $signaled == false)
       $this->_signaled = $signaled;
+    else
+      throw new InvalidArgumentException("Le variable signaled doit être de type bool");
   }
   public function setName($name){
-    if(strlen($name) > 255)
-      $name = substr($name, 0,255);
-    $this->_name = $name;
+    if(is_string($name)){
+      if(strlen($name) > 255)
+        $name = substr($name, 0,255);
+      $this->_name = $name;
+    }else
+      throw new InvalidArgumentException("Le nom du commentaire doit être de type string");
   }
 }

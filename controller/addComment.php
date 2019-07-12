@@ -12,6 +12,8 @@ if(isset($_POST['comment']) && isset($_POST['billet'])){
 	$newComment = new Comment($data);
 
 	$commentManager->add($newComment);
+}else{
+	throw new InvalidArgumentException("Le commentaire ou le billet n'ont pas été spécifiés.");
 }
 
 header('Location: ../index.php');

@@ -13,6 +13,8 @@ if(isset($_POST['textPublication'])){
 	$billet = new Billet($data);
 
 	$billetsManager->add($billet);
+}else{
+	throw new InvalidArgumentException("Le text de la publication n'a pas été spécifié");
 }
 
 header('Location: ../index.php');

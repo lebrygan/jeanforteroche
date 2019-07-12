@@ -14,6 +14,8 @@ if(isset($_POST['textPublication']) && isset($_POST['idBillet'])){
 	$billet = new Billet($data);
 
 	$billetsManager->update($billet);
+}else{
+	throw new InvalidArgumentException("Le text ou le billet n'ont pas été spécifié");
 }
 
 header('Location: ../index.php');

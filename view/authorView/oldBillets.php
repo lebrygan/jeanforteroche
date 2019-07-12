@@ -33,13 +33,13 @@
                 }
                 foreach ($comments as $comment) { ?>
                     <div class="container-fluid bg-white justify-content-center align-items-center row col-sm-12 mx-0 my-1 p-1">
-                        <div class="row col-sm-12">
-                            <div class="col-sm-2 col-xs-12 text-center">
-                                <p class="dateComment mx-2 d-inline-block"><?= $comment->datePublicationReadable() ?></p>
+                        <div class="row col-sm-12 m-0">
+                            <div class="col-md-1 col-sm-2 col-xs-12 text-sm-left my-auto text-xs-center mt-1 p-0">
+                                <p class="dateComment mx-2 my-auto d-inline-block"><?= $comment->datePublicationReadable() ?></p>
                             </div>
-                            <div class="textComment col-sm-10">
-                                <p class="col-12 px-0"><?= htmlspecialchars($comment->comment()) ?></p>
-                                <p class="col-xs-12 px-0 text-sm-right text-xs-center font-italic"><?= '- Publié par <span class="font-weight-bold">'.htmlspecialchars($comment->name()).'</span> -' ?></p>
+                            <div class="textComment col-md-11 col-sm-10 mt-1 p-0">
+                                <p class="col-12 px-0 mb-1"><?= htmlspecialchars($comment->comment()) ?></p>
+                                <p class="col-xs-12 px-0 text-sm-right text-xs-center font-italic mb-1"><?= '- Publié par <span class="font-weight-bold">'.htmlspecialchars($comment->name()).'</span> -' ?></p>
                             </div>
                         </div>
                         <div class="d-flex row">

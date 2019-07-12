@@ -9,7 +9,6 @@ for (var i = deleteBillet.length - 1; i >= 0; i--) {
 				var billet = new FormData();
 				billet.append("billet", e.target.name);
 
-
 				ajaxPost("http://cosmopoly.fr/controller/ajaxController/deleteBillet.php",billet,
 					(response)=>{
 						e.target.parentNode.parentNode.parentNode.innerHTML = '<p class="alert alert-danger text-center">Le billet a été supprimé</p>';
