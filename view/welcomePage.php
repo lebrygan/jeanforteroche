@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- First page to be seen -->
 <html lang='fr'>
     <head>
         <meta charset="utf-8" />

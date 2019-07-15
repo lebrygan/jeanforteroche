@@ -1,3 +1,4 @@
+//Send an email to the client if he forgot his password
 var forgotButton = document.getElementById("forgotPwd");
 
 forgotButton.addEventListener("click", (e)=>{

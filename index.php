@@ -1,14 +1,17 @@
 <?php
+// Router
 session_start();
 
+try{
 require('controller/controller.php');
 
-try{
+	//if the client clicks on the lain title, he is loged out 
 	if(isset($_GET['logout'])){
 		session_destroy();
 		header('Location: index.php'); 
 	}
 
+	//Create session variable, then erase the url
 	if(isset($_GET['user'])){
 		if($_GET['user'] == 'destroy'){
 			session_destroy();
@@ -17,8 +20,10 @@ try{
 		} else if($_GET['user'] == 'author'){
 			$_SESSION['user'] = 'author';
 		}
-		header('Location: /index.html');
+		header('Location: /');
 	}
+
+	//Router choice depend only on the session variables
 	if(isset($_SESSION['user'])){
 		if($_SESSION['user'] == 'visitor')
 			visitorsView();
@@ -41,7 +46,6 @@ try{
 	}
 }
 catch(Exception $e){
-	$content = '<p>'.$e->getMessage().'</p>';
-	require('view/error.php');
+	$content = '<p class="p-2 m-0 text-center bg-white">'.$e->getMessage().'</p>';
 	require('view/template.php');
 }

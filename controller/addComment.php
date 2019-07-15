@@ -2,6 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/managers/CommentsManager.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/entitys/Comment.php');
 
+//Add comment in the database
 if(isset($_POST['comment']) && isset($_POST['billet'])){
 	$commentManager = new CommentsManager;
 
@@ -16,4 +17,4 @@ if(isset($_POST['comment']) && isset($_POST['billet'])){
 	throw new InvalidArgumentException("Le commentaire ou le billet n'ont pas été spécifiés.");
 }
 
-header('Location: ../index.php');
+header('Location: ../');

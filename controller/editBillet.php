@@ -2,6 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/managers/BilletsManager.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/entitys/Billet.php');
 
+//Modify a Billet in the database
 if(isset($_POST['textPublication']) && isset($_POST['idBillet'])){
 	$billetsManager = new BilletsManager;
 
@@ -18,4 +19,4 @@ if(isset($_POST['textPublication']) && isset($_POST['idBillet'])){
 	throw new InvalidArgumentException("Le text ou le billet n'ont pas été spécifié");
 }
 
-header('Location: ../index.php');
+header('Location: ../');

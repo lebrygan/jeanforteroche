@@ -2,6 +2,7 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/managers/UsersManager.php');
 
+//Modify or add a user in the database
 if(isset($_POST['email']) && isset($_POST['pwd'])){
 	$usersManager = new UsersManager;
 

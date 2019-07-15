@@ -2,6 +2,9 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/managers/BilletsManager.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/managers/CommentsManager.php');
 
+
+//Main controller, load pages for the client
+
 function visitorsView(){
 	$billetsManager = new BilletsManager;
 	$billets = $billetsManager->getList(true);

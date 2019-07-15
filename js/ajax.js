@@ -1,4 +1,4 @@
-// AJAX POST
+// AJAX POST fonction, used for every ajax post
 function ajaxPost(url, data, callback) {
     var req = new XMLHttpRequest();
     req.open("POST", url);

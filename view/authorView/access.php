@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-    
+    <!-- Page to get connected as an author -->
     <form class="form-inline bg-white my-2 justify-content-center" method="POST" action="controller/access.php">
     	<label for="email">Votre email : </label>
     	<input class="mx-2" type="text" name="email" id="email" required>

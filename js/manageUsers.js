@@ -1,3 +1,4 @@
+//Button to change or add a new user
 var addChangeUserButton = document.getElementById("addChangeUser");
 
 addChangeUserButton.addEventListener("click", (e)=>{
@@ -21,8 +22,9 @@ addChangeUserButton.addEventListener("click", (e)=>{
 	}
 });
 
-var deleteUserButton = document.getElementById("deleteUser");
 
+//Button to delete existing user
+var deleteUserButton = document.getElementById("deleteUser");
 
 deleteUserButton.addEventListener("click", (e)=>{
 

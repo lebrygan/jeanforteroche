@@ -1,3 +1,4 @@
+//Class to show or hide comments when there are more than 2
 class ShowHideButton{
 	constructor(button,comments){
 		this.button = button;
@@ -5,8 +6,8 @@ class ShowHideButton{
 		this.hide = false;
 
 		this.button.addEventListener("click",this.switch.bind(this));
-		this.hideComments();
 		if(this.comments.length > 4){
+			this.hideComments();
 			this.button.className = "hideComments btn btn-dark mx-auto mt-2 mb-4";
 		}
 	}
