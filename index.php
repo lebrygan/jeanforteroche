@@ -3,12 +3,13 @@
 session_start();
 
 try{
+	$content = '';
 	require('controller/controller.php');
 
 	//if the client clicks on the main title, he is loged out 
 	if(isset($_GET['logout'])){
 		session_destroy();
-		header('Location: index.php'); 
+		header('Location: /'); 
 	}
 
 	//Create session variable, then erase the url
@@ -46,6 +47,8 @@ try{
 	}
 }
 catch(Exception $e){
+	ob_clean();
+	$script = '';
 	$content = '<p class="p-2 m-0 text-center bg-white">'.$e->getMessage().'</p>';
 	require('view/template.php');
 }
