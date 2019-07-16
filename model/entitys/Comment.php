@@ -7,13 +7,12 @@ class Comment extends DbObject{
             $_comment,
             $_signaled,
             $_name;
-
+            
   public function __construct(array $donnees){
     $this->hydrate($donnees);
   }
 
   //Getters and setters
-
   public function relativeBillet(){return $this->_relativeBillet;}
   public function comment(){return $this->_comment;}
   public function signaled(){return $this->_signaled;}

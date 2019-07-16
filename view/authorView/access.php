@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
     <!-- Page to get connected as an author -->
-    <form class="form-inline bg-white my-2 justify-content-center" method="POST" action="controller/access.php">
+    <form class="form-inline bg-white my-2 justify-content-center" method="POST" action="controller/formCall/access.php">
     	<label for="email">Votre email : </label>
     	<input class="mx-2" type="text" name="email" id="email" required>
     	<label for="password">Votre mot de passe : </label>

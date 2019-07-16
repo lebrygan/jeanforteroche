@@ -17,4 +17,4 @@ if(isset($_POST['comment']) && isset($_POST['billet'])){
 	throw new InvalidArgumentException("Le commentaire ou le billet n'ont pas été spécifiés.");
 }
 
-header('Location: ../');
+header('Location: /');

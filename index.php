@@ -3,9 +3,9 @@
 session_start();
 
 try{
-require('controller/controller.php');
+	require('controller/controller.php');
 
-	//if the client clicks on the lain title, he is loged out 
+	//if the client clicks on the main title, he is loged out 
 	if(isset($_GET['logout'])){
 		session_destroy();
 		header('Location: index.php'); 

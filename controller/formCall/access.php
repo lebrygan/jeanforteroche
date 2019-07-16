@@ -10,7 +10,7 @@ if(isset($_POST['email']) and isset($_POST['password'])){
 	if(password_verify($_POST['password'], $password['password']) && $_POST['password'] != ''){
 		$_SESSION['isConnected'] = 'connected';
 	}
-	header('Location: ../');
+	header('Location: /');
 }else{
 	throw new InvalidArgumentException("L'email ou le mot de passe n'ont pas été spécifiés.");
 }

@@ -19,9 +19,9 @@ protected	$_id,
 	public function setId($id){
 	    $id = (int) $id;
 	    if($id > 0)
-	      $this->_id = $id;
-	  else
-      throw new InvalidArgumentException("Les ID doivent être positif");
+	      	$this->_id = $id;
+	  	else
+      		throw new InvalidArgumentException("Les ID doivent être positif");
   	}
   	public function setDatePublication($datePublication){
 	      $this->_datePublication = $datePublication;
@@ -48,5 +48,5 @@ protected	$_id,
 	        $information .= $key.' => '.$value.' || ';
 	    }
 	    return $information;
-  }
+  	}
 }

@@ -15,7 +15,7 @@ addChangeUserButton.addEventListener("click", (e)=>{
 		formData.append("email", $email);
 		formData.append("pwd", $password);
 
-		ajaxPost("http://cosmopoly.fr/controller/ajaxController/addChangeUsers.php",formData,
+		ajaxPost("http://cosmopoly.fr/controller/ajaxCall/addChangeUsers.php",formData,
 			(response)=>{
 				document.getElementById("respondUser").innerHTML = '<p class="alert alert-success">L\'utilisateur a été modifié</p>';
 			});
@@ -32,7 +32,7 @@ deleteUserButton.addEventListener("click", (e)=>{
 	formData.append("email", document.getElementById("email").value);
 
 
-	ajaxPost("http://cosmopoly.fr/controller/ajaxController/deleteUsers.php",formData,
+	ajaxPost("http://cosmopoly.fr/controller/ajaxCall/deleteUsers.php",formData,
 		(response)=>{
 			document.getElementById("respondUser").innerHTML = '<p class="alert alert-success">L\'utilisateur a été supprimé</p>';
 		});

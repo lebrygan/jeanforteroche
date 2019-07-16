@@ -1,20 +1,22 @@
 <?php ob_start(); ?>
     <div class="container-fluid p-0">
-        <form class="form-group col-sm-12 billetContainer pt-3 pb-3" method="POST" action="controller/editBillet.php">
+        <form class="form-group col-sm-12 billetContainer pt-3 pb-3" method="POST" action="controller/formCall/editBillet.php">
             <p class="dateBillet mb-2"><?= $billet->datePublicationReadable(); ?></p>
             <textarea name="textPublication" class="tinyMCEarea" rows="15">
                 <?= $billet->textPublication(); ?> 
             </textarea>
             <div class="text-center justify-content-center">
                 <p class="col-12">Ceci est le billet n°<?= $billet->id(); ?></p>
-                <?php
-                    if ($billet->published()) {
-                        echo '<input class="checkbox" type="checkbox" name="published" id="published" checked>';
-                    } else {
-                        echo '<input class="checkbox" type="checkbox" name="published" id="published">';
-                    }
-                ?>
-                <label class="form-check-label mx-2 align-self-center h-100"  for="published">Publier le billet</label>
+                <label class="form-check-label mx-2 align-self-center h-100">
+                    <?php
+                        if ($billet->published()) {
+                            echo '<input class="checkbox" type="checkbox" name="published" checked>';
+                        } else {
+                            echo '<input class="checkbox" type="checkbox" name="published">';
+                        }
+                    ?>
+                    Publier le billet
+                </label>
             </div>
             <div class="row col-12 justify-content-center">
                 <input type="hidden" name="idBillet" value=<?= '"'.$billet->id().'"'; ?> />

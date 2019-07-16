@@ -19,10 +19,10 @@ function visitorsView(){
 
 	foreach ($billets as $billet) {
 		$comments = $commentsManager->getList($billet->id(),false);
-		require('view/visitorsView.php');
+		require('view/visitorsView/billets.php');
 
 	}
-	require('view/footer.php');
+	require('view/visitorsView/footer.php');
 	require('view/template.php');
 }
 
@@ -47,7 +47,7 @@ function authorView(){
 	}
 
 	$script = '<script src="js/manageUsers.js"></script>';
-	$script .='<script type="text/javascript" src="js/manageBillet.js"></script>';
+	$script .='<script src="js/manageBillet.js"></script>';
 	$script .='<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=5dq4ykchp5kaozo8vxeqvqp20ycwj2n7b7fj2p2mwgbo4z2a"></script>';
 	$script .='<script>tinymce.init({selector: ".tinyMCEarea"});</script>';
 

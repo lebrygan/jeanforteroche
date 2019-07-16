@@ -11,7 +11,6 @@ class Billet extends DbObject{
   }
 
   //Getters and setters
-
   public function published(){return $this->_published;}
   public function textPublication(){return $this->_textPublication;}
 
